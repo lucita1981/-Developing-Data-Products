@@ -1,0 +1,30 @@
+---
+title: "Colombia Map"
+author: "Lucia Martinez"
+date: "6 de junio de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview
+In this project, I wanted to show some basic data of my country: Colombia, as are its main cities, the population´s size represented by circles radius and its climate represented by colors of the circles.
+
+
+```{r}
+library(leaflet)
+
+coordCities <- data.frame(lat = c(4.6097102, 6.2518401, 3.4372201, 10.3997202, 10.9685402, 7.1253901 ), lng=c(-74.081749, -75.563591, -76.5224991, -75.5144424, -74.7813187, -73.1197968))
+nameCities <- c("Bogotá","Medellin","Cali","Cartagena", "Barranquilla", "Bucaramanga")
+popCities <- c(7674366, 2417325, 2319684, 978600, 1206946, 526827) 
+weaCities <- c ("blue", "green", "red", "red", "red", "green")
+
+
+coordCities %>% leaflet() %>% addTiles() %>% addCircleMarkers(radius= (popCities/100000), popup = nameCities, color = weaCities) %>%
+addLegend("bottomright",  colors =  c("Blue", "Green", "Red"), labels = c("Cold", "Warm", "Hot"), title = "Climate", opacity = 1)
+
+
+```
+
