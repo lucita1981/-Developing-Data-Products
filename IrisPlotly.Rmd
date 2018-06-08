@@ -1,0 +1,25 @@
+---
+title: "R Markdown Presentation & Plotly - Iris Plot"
+author: "Lucia Martinez"
+date: "8 de junio de 2018"
+output: ioslides_presentation
+---
+
+## Overview
+In this project, I show an example of using Plotly. For this, I chose Iris data set and I will show a scatter 3D plot where X-Axis will be the column “Sepal.Length”, Y-Axis the column “Sepal.Width”, Z-Axis the column “Petal.Width", the dots´ size will be based on the column “Petal.Length”  and the dots’ colors will represente the Species.
+
+```{r, message=FALSE, echo=TRUE}
+#Loading Dataset
+data("iris")
+head(iris,2)
+```
+
+## Iris Plot
+```{r, message=FALSE, echo=TRUE, warning= FALSE, fig.align='center'}
+library(plotly)
+plot_ly(iris, x = ~Sepal.Length, y = ~Sepal.Width, z=~Petal.Width,
+        type = "scatter3d", mode = "markers", size=~Petal.Length, 
+        color=~Species)
+```
+
+
